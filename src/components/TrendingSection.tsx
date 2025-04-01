@@ -39,10 +39,10 @@ export default function TrendingSection({ tokens }: TrendingSectionProps) {
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
               className={cn(
-                "text-xs px-3 py-1 rounded-full transition-colors",
+                "text-xs px-4 py-1.5 rounded-full transition-all active:animate-button-press",
                 selectedCategory === category.id
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-muted-foreground hover:text-foreground"
+                  : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-muted/80"
               )}
             >
               {category.name}
@@ -56,14 +56,14 @@ export default function TrendingSection({ tokens }: TrendingSectionProps) {
           {filteredTokens.map(token => (
             <div 
               key={token.id}
-              className="flex flex-col justify-between p-4 min-w-[150px] md:min-w-[180px] rounded-lg bg-secondary border border-border hover:border-primary/50 transition-colors"
+              className="flex flex-col justify-between p-4 min-w-[150px] md:min-w-[180px] rounded-xl bg-secondary border border-border hover:border-primary/50 transition-colors"
             >
               <div className="flex justify-between items-start mb-3">
                 <div>
                   <h4 className="font-medium">{token.name}</h4>
                   <div className="text-xs text-muted-foreground mt-0.5">{token.symbol}</div>
                 </div>
-                <div className="text-xs px-2 py-0.5 rounded-full bg-secondary border border-border">
+                <div className="text-xs px-3 py-1 rounded-full bg-secondary border border-border">
                   {token.category}
                 </div>
               </div>

@@ -34,7 +34,7 @@ const SidebarLink = ({
     <button
       onClick={onClick}
       className={cn(
-        "flex items-center gap-3 px-3 py-2.5 rounded-md w-full transition-all duration-200",
+        "flex items-center gap-3 px-3 py-2.5 rounded-full w-full transition-all duration-200 active:animate-button-press",
         active 
           ? "bg-sidebar-primary text-sidebar-primary-foreground font-medium" 
           : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
@@ -68,7 +68,7 @@ export default function Sidebar({ className }: SidebarProps) {
           "flex items-center gap-2",
           collapsed && "justify-center"
         )}>
-          <div className="h-8 w-8 rounded-md bg-primary/90 flex items-center justify-center">
+          <div className="h-8 w-8 rounded-full bg-primary/90 flex items-center justify-center">
             <BarChart4 size={18} className="text-primary-foreground" />
           </div>
           {!collapsed && (
@@ -80,7 +80,7 @@ export default function Sidebar({ className }: SidebarProps) {
       <div className="absolute top-4 -right-3">
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="flex items-center justify-center h-6 w-6 rounded-full bg-sidebar-border text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
+          className="flex items-center justify-center h-6 w-6 rounded-full bg-sidebar-border text-sidebar-foreground hover:bg-sidebar-accent transition-colors active:animate-button-press"
         >
           {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>

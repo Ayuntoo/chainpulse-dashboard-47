@@ -26,7 +26,7 @@ export default function Header({ onRefresh, isLoading = false }: HeaderProps) {
         <button
           onClick={onRefresh}
           className={cn(
-            "h-9 w-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors bg-secondary hover:bg-secondary/80",
+            "h-9 w-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-all active:animate-button-press bg-secondary hover:bg-muted/80",
             isLoading && "animate-pulse"
           )}
           disabled={isLoading}
@@ -34,7 +34,7 @@ export default function Header({ onRefresh, isLoading = false }: HeaderProps) {
           <RefreshCw size={16} className={isLoading ? "animate-spin" : ""} />
         </button>
         
-        <button className="h-9 w-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors bg-secondary hover:bg-secondary/80 relative">
+        <button className="h-9 w-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-all active:animate-button-press bg-secondary hover:bg-muted/80 relative">
           <Bell size={16} />
           <span className="absolute top-1 right-2 h-2 w-2 rounded-full bg-primary"></span>
         </button>

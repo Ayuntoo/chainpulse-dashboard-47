@@ -57,7 +57,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
               <th className="text-left px-4 py-3 text-sm font-medium text-muted-foreground">
                 <button 
                   onClick={() => handleSort("name")} 
-                  className="flex items-center gap-1 hover:text-foreground transition-colors"
+                  className="flex items-center gap-1 hover:text-foreground transition-colors pill-button-secondary py-1 px-3 text-xs"
                 >
                   Project
                   <ArrowUpDown size={14} className="text-muted-foreground/50" />
@@ -66,7 +66,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
               <th className="text-left px-4 py-3 text-sm font-medium text-muted-foreground">
                 <button 
                   onClick={() => handleSort("rank")} 
-                  className="flex items-center gap-1 hover:text-foreground transition-colors"
+                  className="flex items-center gap-1 hover:text-foreground transition-colors pill-button-secondary py-1 px-3 text-xs"
                 >
                   Rank
                   <ArrowUpDown size={14} className="text-muted-foreground/50" />
@@ -75,7 +75,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
               <th className="text-left px-4 py-3 text-sm font-medium text-muted-foreground">
                 <button 
                   onClick={() => handleSort("brokerScore")} 
-                  className="flex items-center gap-1 hover:text-foreground transition-colors"
+                  className="flex items-center gap-1 hover:text-foreground transition-colors pill-button-secondary py-1 px-3 text-xs"
                 >
                   Broker Score
                   <ArrowUpDown size={14} className="text-muted-foreground/50" />
@@ -84,7 +84,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
               <th className="text-right px-4 py-3 text-sm font-medium text-muted-foreground">
                 <button 
                   onClick={() => handleSort("price")} 
-                  className="flex items-center gap-1 justify-end ml-auto hover:text-foreground transition-colors"
+                  className="flex items-center gap-1 justify-end ml-auto hover:text-foreground transition-colors pill-button-secondary py-1 px-3 text-xs"
                 >
                   Price
                   <ArrowUpDown size={14} className="text-muted-foreground/50" />
@@ -93,7 +93,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
               <th className="text-right px-4 py-3 text-sm font-medium text-muted-foreground">
                 <button 
                   onClick={() => handleSort("priceChange")} 
-                  className="flex items-center gap-1 justify-end ml-auto hover:text-foreground transition-colors"
+                  className="flex items-center gap-1 justify-end ml-auto hover:text-foreground transition-colors pill-button-secondary py-1 px-3 text-xs"
                 >
                   24h Change
                   <ArrowUpDown size={14} className="text-muted-foreground/50" />

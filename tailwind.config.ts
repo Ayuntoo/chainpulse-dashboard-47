@@ -64,12 +64,12 @@ export default {
           ring: "hsl(var(--sidebar-ring))"
         },
         chart: {
-          blue: "#4A9DFF",
-          green: "#4ADE80",
+          blue: "#A78BFA",
+          green: "#10B981",
           red: "#F87171",
-          yellow: "#FACC15",
-          purple: "#A78BFA",
-          teal: "#2DD4BF"
+          yellow: "#FBBF24",
+          purple: "#8B5CF6",
+          teal: "#14B8A6"
         }
       },
       borderRadius: {
@@ -105,6 +105,11 @@ export default {
         "slide-in": {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(0)" }
+        },
+        "button-press": {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(0.95)" },
+          "100%": { transform: "scale(1)" }
         }
       },
       animation: {
@@ -114,7 +119,8 @@ export default {
         "fade-out": "fade-out 0.4s ease-out",
         "scale-in": "scale-in 0.35s ease-out",
         "pulse-glow": "pulse-glow 3s infinite",
-        "slide-in": "slide-in 0.4s ease-out"
+        "slide-in": "slide-in 0.4s ease-out",
+        "button-press": "button-press 0.3s ease-out"
       }
     }
   },
