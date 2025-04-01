@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useNavigate, useLocation } from "react-router-dom";
 import { 
   LayoutDashboard, 
   TrendingUp, 
@@ -52,8 +53,24 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ className }: SidebarProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
-  const [activeLink, setActiveLink] = useState("Dashboard");
+  
+  const getActivePath = () => {
+    const path = location.pathname;
+    if (path === "/") return "Dashboard";
+    if (path === "/projects") return "Project List";
+    if (path === "/top-roi") return "Top ROI";
+    if (path === "/trending") return "Trending";
+    if (path === "/market-insights") return "Market Insights";
+    if (path === "/portfolios") return "Portfolios";
+    if (path === "/social-trends") return "Social Trends";
+    if (path === "/settings") return "Settings";
+    return "Dashboard";
+  };
+
+  const activeLink = getActivePath();
 
   return (
     <div
@@ -93,28 +110,28 @@ export default function Sidebar({ className }: SidebarProps) {
             label="Dashboard" 
             active={activeLink === "Dashboard"}
             collapsed={collapsed}
-            onClick={() => setActiveLink("Dashboard")}
+            onClick={() => navigate("/")}
           />
           <SidebarLink 
             icon={List} 
             label="Project List" 
             active={activeLink === "Project List"}
             collapsed={collapsed}
-            onClick={() => setActiveLink("Project List")}
+            onClick={() => navigate("/projects")}
           />
           <SidebarLink 
             icon={Star} 
             label="Top ROI" 
             active={activeLink === "Top ROI"}
             collapsed={collapsed}
-            onClick={() => setActiveLink("Top ROI")}
+            onClick={() => navigate("/top-roi")}
           />
           <SidebarLink 
             icon={TrendingUp} 
             label="Trending" 
             active={activeLink === "Trending"}
             collapsed={collapsed}
-            onClick={() => setActiveLink("Trending")}
+            onClick={() => navigate("/trending")}
           />
         </div>
 
@@ -131,21 +148,21 @@ export default function Sidebar({ className }: SidebarProps) {
               label="Market Insights" 
               active={activeLink === "Market Insights"}
               collapsed={collapsed}
-              onClick={() => setActiveLink("Market Insights")}
+              onClick={() => navigate("/market-insights")}
             />
             <SidebarLink 
               icon={Wallet} 
               label="Portfolios" 
               active={activeLink === "Portfolios"}
               collapsed={collapsed}
-              onClick={() => setActiveLink("Portfolios")}
+              onClick={() => navigate("/portfolios")}
             />
             <SidebarLink 
               icon={Users} 
               label="Social Trends" 
               active={activeLink === "Social Trends"}
               collapsed={collapsed}
-              onClick={() => setActiveLink("Social Trends")}
+              onClick={() => navigate("/social-trends")}
             />
           </div>
         </div>
@@ -157,7 +174,7 @@ export default function Sidebar({ className }: SidebarProps) {
           label="Settings" 
           active={activeLink === "Settings"}
           collapsed={collapsed}
-          onClick={() => setActiveLink("Settings")}
+          onClick={() => navigate("/settings")}
         />
       </div>
     </div>

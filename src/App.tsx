@@ -1,9 +1,17 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import ProjectList from "./pages/ProjectList";
+import TopROI from "./pages/TopROI";
+import Trending from "./pages/Trending";
+import MarketInsights from "./pages/MarketInsights";
+import Portfolios from "./pages/Portfolios";
+import SocialTrends from "./pages/SocialTrends";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,6 +24,13 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/projects" element={<ProjectList />} />
+          <Route path="/top-roi" element={<TopROI />} />
+          <Route path="/trending" element={<Trending />} />
+          <Route path="/market-insights" element={<MarketInsights />} />
+          <Route path="/portfolios" element={<Portfolios />} />
+          <Route path="/social-trends" element={<SocialTrends />} />
+          <Route path="/settings" element={<Settings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
