@@ -89,7 +89,7 @@ export default function Sidebar({ className }: SidebarProps) {
             <BarChart4 size={18} className="text-primary-foreground" />
           </div>
           {!collapsed && (
-            <h1 className="font-semibold text-xl text-sidebar-foreground">Super<span className="text-primary">Agent</span></h1>
+            <h1 className="font-semibold text-xl text-sidebar-foreground">AI<span className="text-primary">School</span></h1>
           )}
         </div>
       </div>
