@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { ArrowDownRight, ArrowUpDown, ArrowUpRight, ListStart } from "lucide-react";
+import { ArrowDownRight, ArrowUpDown, ArrowUpRight, Users } from "lucide-react";
 
 interface Project {
   id: number;
@@ -46,8 +46,8 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
   return (
     <div className="rounded-lg border border-border bg-card p-5 gradient-border animate-scale-in" style={{ animationDelay: "300ms" }}>
       <div className="flex items-center gap-2 mb-4">
-        <ListStart size={16} className="text-primary" />
-        <h3 className="font-medium">Recently Added Projects</h3>
+        <Users size={16} className="text-primary" />
+        <h3 className="font-medium">Class Details</h3>
       </div>
       
       <div className="overflow-x-auto">
@@ -59,7 +59,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
                   onClick={() => handleSort("name")} 
                   className="flex items-center gap-1 hover:text-foreground transition-colors pill-button-secondary py-1 px-3 text-xs"
                 >
-                  Project
+                  Class
                   <ArrowUpDown size={14} className="text-muted-foreground/50" />
                 </button>
               </th>
@@ -77,7 +77,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
                   onClick={() => handleSort("brokerScore")} 
                   className="flex items-center gap-1 hover:text-foreground transition-colors pill-button-secondary py-1 px-3 text-xs"
                 >
-                  Broker Score
+                  Pass Rate
                   <ArrowUpDown size={14} className="text-muted-foreground/50" />
                 </button>
               </th>
@@ -86,7 +86,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
                   onClick={() => handleSort("price")} 
                   className="flex items-center gap-1 justify-end ml-auto hover:text-foreground transition-colors pill-button-secondary py-1 px-3 text-xs"
                 >
-                  Price
+                  Students
                   <ArrowUpDown size={14} className="text-muted-foreground/50" />
                 </button>
               </th>
@@ -95,7 +95,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
                   onClick={() => handleSort("priceChange")} 
                   className="flex items-center gap-1 justify-end ml-auto hover:text-foreground transition-colors pill-button-secondary py-1 px-3 text-xs"
                 >
-                  24h Change
+                  Change
                   <ArrowUpDown size={14} className="text-muted-foreground/50" />
                 </button>
               </th>
@@ -136,7 +136,7 @@ export default function ProjectsTable({ projects }: ProjectsTableProps) {
                   </div>
                 </td>
                 <td className="px-4 py-3 text-right">
-                  <div className="font-medium">${project.price.toFixed(2)}</div>
+                  <div className="font-medium">{project.price}</div>
                 </td>
                 <td className="px-4 py-3 text-right">
                   <div className={cn(

@@ -8,12 +8,12 @@ import {
   recentlyAddedProjects 
 } from "@/lib/mockData";
 
-// In a real application, we'd fetch from APIs:
-// - Market Data: CoinGecko /api/v3/global
-// - Bitcoin Price: CoinGecko /api/v3/simple/price?ids=bitcoin
-// - Trending Coins: CoinGecko /api/v3/search/trending
-// - Recently Added: CoinGecko /api/v3/coins/markets?order=market_cap_desc
-// - Fear & Greed Index: Alternative.me https://api.alternative.me/fng/
+// In a real application, we'd fetch from school APIs:
+// - School Data: School API /api/v1/student-stats
+// - Class Data: School API /api/v1/classes
+// - Grade Data: School API /api/v1/grades
+// - Subject Data: School API /api/v1/subjects
+// - Performance Data: School API /api/v1/performance
 
 export function useStats() {
   const [loading, setLoading] = useState(true);

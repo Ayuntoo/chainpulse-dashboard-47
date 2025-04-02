@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { TrendingUp, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { School, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { cryptoCategories } from "@/lib/mockData";
 
 interface TrendingToken {
@@ -29,8 +29,8 @@ export default function TrendingSection({ tokens }: TrendingSectionProps) {
     <div className="rounded-lg border border-border bg-card p-5 gradient-border animate-scale-in" style={{ animationDelay: "200ms" }}>
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center gap-2">
-          <TrendingUp size={16} className="text-primary" />
-          <h3 className="font-medium">Trending</h3>
+          <School size={16} className="text-primary" />
+          <h3 className="font-medium">Exam Statistics</h3>
         </div>
         
         <div className="flex gap-2">
@@ -77,6 +77,7 @@ export default function TrendingSection({ tokens }: TrendingSectionProps) {
                   : <ArrowDownRight size={14} />
                 }
                 <span className="ml-0.5 font-medium">{Math.abs(token.change)}%</span>
+                <span className="ml-1 text-xs text-muted-foreground">Average Score</span>
               </div>
             </div>
           ))}

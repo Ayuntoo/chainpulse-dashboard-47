@@ -1,7 +1,7 @@
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight, ArrowDownRight, AlertCircle } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, Award } from "lucide-react";
 
 interface FearGreedIndexProps {
   value: number;
@@ -24,11 +24,11 @@ export default function FearGreedIndex({
 
   // Color mapping based on the value
   const getColor = (value: number) => {
-    if (value >= 75) return "#4ADE80"; // Extreme Greed
-    if (value >= 55) return "#A3E635"; // Greed
-    if (value >= 45) return "#FACC15"; // Neutral
-    if (value >= 25) return "#FB923C"; // Fear
-    return "#F87171"; // Extreme Fear
+    if (value >= 75) return "#4ADE80"; // Excellent
+    if (value >= 55) return "#A3E635"; // Good
+    if (value >= 45) return "#FACC15"; // Average
+    if (value >= 25) return "#FB923C"; // Below Average
+    return "#F87171"; // Needs Improvement
   };
   
   const indicatorColor = getColor(value);
@@ -38,8 +38,8 @@ export default function FearGreedIndex({
     <div className="rounded-lg border border-border bg-card p-5 gradient-border h-[320px] animate-scale-in" style={{ animationDelay: "400ms" }}>
       <div className="flex justify-between items-start mb-4">
         <div className="flex items-center gap-2">
-          <AlertCircle size={16} className="text-primary" />
-          <h3 className="font-medium">Fear & Greed Index</h3>
+          <Award size={16} className="text-primary" />
+          <h3 className="font-medium">Top 100 Students</h3>
         </div>
       </div>
       
@@ -73,7 +73,7 @@ export default function FearGreedIndex({
           </div>
           
           <div className="flex items-center mt-4 text-sm">
-            <span className="text-muted-foreground mr-2">Yesterday: {previousValue}</span>
+            <span className="text-muted-foreground mr-2">Last Month: {previousValue}</span>
             <div className={cn(
               "flex items-center",
               isPositiveChange ? "text-green-500" : "text-red-500"

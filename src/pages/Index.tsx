@@ -8,7 +8,7 @@ import GaugeChart from "@/components/GaugeChart";
 import TrendingSection from "@/components/TrendingSection";
 import ProjectsTable from "@/components/ProjectsTable";
 import FearGreedIndex from "@/components/FearGreedIndex";
-import { Bitcoin, DollarSign, BarChart, LineChart } from "lucide-react";
+import { School, Users, BarChart, Award } from "lucide-react";
 
 export default function Index() {
   const { 
@@ -21,15 +21,9 @@ export default function Index() {
     refreshData 
   } = useStats();
   
-  // Format large numbers for display
-  const formatCurrency = (value: number) => {
-    if (value >= 1000000000) {
-      return `$${(value / 1000000000).toFixed(2)}B`;
-    }
-    if (value >= 1000000) {
-      return `$${(value / 1000000).toFixed(2)}M`;
-    }
-    return `$${value.toFixed(2)}`;
+  // Format numbers for display
+  const formatNumber = (value: number) => {
+    return value.toString();
   };
   
   return (
@@ -43,37 +37,37 @@ export default function Index() {
           <div className="max-w-screen-2xl mx-auto space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               <StatsCard 
-                title="Market Cap" 
-                value={formatCurrency(stats.marketCap)} 
+                title="Student Count" 
+                value={formatNumber(stats.studentCount)} 
                 change={stats.dailyChange} 
-                icon={<BarChart size={20} className="text-chart-blue" />}
+                icon={<School size={20} className="text-chart-blue" />}
                 colorClass="from-blue-500/20 to-blue-600/5"
                 animationDelay="0ms"
               />
               
               <StatsCard 
-                title="Bitcoin Price" 
-                value={formatCurrency(stats.bitcoinPrice)} 
+                title="Senior Students" 
+                value={`${stats.seniorPassRate}%`} 
                 change={4.2} 
-                icon={<Bitcoin size={20} className="text-chart-yellow" />}
+                icon={<Award size={20} className="text-chart-yellow" />}
                 colorClass="from-yellow-500/20 to-yellow-600/5"
                 animationDelay="50ms"
               />
               
               <StatsCard 
-                title="Total Value Locked" 
-                value={formatCurrency(stats.totalValueLocked)} 
+                title="Junior Students" 
+                value={`${stats.juniorPassRate}%`} 
                 change={10.2} 
-                icon={<DollarSign size={20} className="text-chart-green" />}
+                icon={<Users size={20} className="text-chart-green" />}
                 colorClass="from-green-500/20 to-green-600/5"
                 animationDelay="100ms"
               />
               
               <StatsCard 
-                title="24h Trading Volume" 
-                value={formatCurrency(stats.tradingVolume)} 
+                title="Freshman Students" 
+                value={`${stats.freshmanPassRate}%`} 
                 change={-2.8} 
-                icon={<LineChart size={20} className="text-chart-purple" />}
+                icon={<BarChart size={20} className="text-chart-purple" />}
                 colorClass="from-purple-500/20 to-purple-600/5"
                 animationDelay="150ms"
               />

@@ -1,6 +1,6 @@
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { ArrowDownRight, ArrowUpRight, LockIcon } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Award } from "lucide-react";
 
 interface GaugeChartProps {
   value: number;
@@ -9,8 +9,8 @@ interface GaugeChartProps {
 }
 
 export default function GaugeChart({ value, dailyChange, weeklyChange }: GaugeChartProps) {
-  // Format value as billions with 2 decimal places
-  const formattedValue = (value / 1000000000).toFixed(2);
+  // Format value
+  const formattedValue = value.toString();
   
   // Gauge chart data setup
   const data = [
@@ -27,10 +27,10 @@ export default function GaugeChart({ value, dailyChange, weeklyChange }: GaugeCh
       <div className="flex justify-between items-start mb-6">
         <div>
           <h3 className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
-            <LockIcon size={14} />
-            Total Value Locked
+            <Award size={14} />
+            Top 10 Students In Each Grade
           </h3>
-          <div className="text-2xl font-semibold mt-1.5">${formattedValue}B</div>
+          <div className="text-2xl font-semibold mt-1.5">Total: {formattedValue}</div>
         </div>
       </div>
 
@@ -66,10 +66,10 @@ export default function GaugeChart({ value, dailyChange, weeklyChange }: GaugeCh
         </ResponsiveContainer>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center -mt-8">
-          <div className="text-xl font-medium mb-5 text-center">TVL Change</div>
+          <div className="text-xl font-medium mb-5 text-center">Grade Distribution</div>
           <div className="grid grid-cols-2 gap-4 w-full max-w-[240px]">
             <div className="flex flex-col items-center bg-secondary p-3 rounded-md">
-              <div className="text-sm text-muted-foreground mb-1">Daily</div>
+              <div className="text-sm text-muted-foreground mb-1">Grade 1</div>
               <div className="flex items-center gap-1">
                 <ArrowUpRight size={16} className="text-green-500" />
                 <span className="text-lg font-medium text-green-500">{dailyChange}%</span>
@@ -77,7 +77,7 @@ export default function GaugeChart({ value, dailyChange, weeklyChange }: GaugeCh
             </div>
             
             <div className="flex flex-col items-center bg-secondary p-3 rounded-md">
-              <div className="text-sm text-muted-foreground mb-1">Weekly</div>
+              <div className="text-sm text-muted-foreground mb-1">Grade 2-3</div>
               <div className="flex items-center gap-1">
                 <ArrowUpRight size={16} className="text-green-500" />
                 <span className="text-lg font-medium text-green-500">{weeklyChange}%</span>
