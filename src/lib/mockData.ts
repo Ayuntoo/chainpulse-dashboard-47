@@ -5,7 +5,9 @@ export const marketStats = {
   juniorPassRate: 87.5,
   freshmanPassRate: 84.7,
   dailyChange: 2.3,
-  weeklyChange: -4.8
+  weeklyChange: -4.8,
+  totalEnrollment: 2475,
+  academicPerformance: 86.5
 };
 
 export const tvlGaugeData = {
@@ -47,4 +49,57 @@ export const cryptoCategories = [
   { id: "grade1", name: "Grade One" },
   { id: "grade2", name: "Grade Two" },
   { id: "grade3", name: "Grade Three" },
+];
+
+// New data for Top ROI page
+export const topPerformingStudents = [
+  { name: "Mathematics", ticker: "MATH", roi: "94.8%", period: "Spring Term", students: "128" },
+  { name: "Physics", ticker: "PHY", roi: "92.3%", period: "Spring Term", students: "95" },
+  { name: "Chemistry", ticker: "CHEM", roi: "89.6%", period: "Spring Term", students: "86" },
+  { name: "English Literature", ticker: "LIT", roi: "87.5%", period: "Spring Term", students: "112" },
+  { name: "Computer Science", ticker: "CS", roi: "91.2%", period: "Spring Term", students: "76" },
+];
+
+// New data for School Insights page
+export const schoolInsights = {
+  enrollment: 2475,
+  graduationRate: 94.5,
+  teacherCount: 148,
+  academicRanking: 12,
+  scholarshipRate: 23.5
+};
+
+// New data for Social Trends page
+export const socialTrendingTopics = [
+  { topic: "#MathOlympiad", mentions: "124", sentiment: "positive", change: "+15%" },
+  { topic: "#ScienceFair", mentions: "98", sentiment: "positive", change: "+8%" },
+  { topic: "#DebateTeam", mentions: "76", sentiment: "positive", change: "+22%" },
+  { topic: "#SportsDay", mentions: "45", sentiment: "neutral", change: "+3%" },
+  { topic: "#GradNight", mentions: "32", sentiment: "positive", change: "+7%" },
+];
+
+// New data for Portfolios page
+export const studentPrograms = [
+  { 
+    name: "Science Track", 
+    totalValue: "92.3%", 
+    dailyChange: 2.4,
+    assets: [
+      { name: "Physics", ticker: "PHY", allocation: "45%", value: "94.5%" },
+      { name: "Chemistry", ticker: "CHEM", allocation: "30%", value: "91.2%" },
+      { name: "Biology", ticker: "BIO", allocation: "15%", value: "89.8%" },
+      { name: "Mathematics", ticker: "MATH", allocation: "10%", value: "95.1%" }
+    ]
+  },
+  { 
+    name: "Humanities Track", 
+    totalValue: "88.5%", 
+    dailyChange: -1.2,
+    assets: [
+      { name: "Literature", ticker: "LIT", allocation: "25%", value: "87.6%" },
+      { name: "History", ticker: "HIST", allocation: "35%", value: "86.4%" },
+      { name: "Geography", ticker: "GEO", allocation: "20%", value: "89.2%" },
+      { name: "Languages", ticker: "LANG", allocation: "20%", value: "91.5%" }
+    ]
+  }
 ];

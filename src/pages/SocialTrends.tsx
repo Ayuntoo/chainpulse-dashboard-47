@@ -1,48 +1,41 @@
 
 import { useState } from "react";
-import { ArrowLeft, TrendingUp, TrendingDown, Twitter, MessageCircle } from "lucide-react";
+import { ArrowLeft, TrendingUp, TrendingDown, MessageSquare, School } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { useStats } from "@/hooks/useStats";
+import { socialTrendingTopics } from "@/lib/mockData";
 
 export default function SocialTrends() {
   const navigate = useNavigate();
   const { loading, trending, refreshData } = useStats();
   
-  // Sample social data
-  const trendingTopics = [
-    { topic: "#Bitcoin", mentions: "124.5K", sentiment: "positive", change: "+15%" },
-    { topic: "#Ethereum", mentions: "98.3K", sentiment: "positive", change: "+8%" },
-    { topic: "#Solana", mentions: "76.1K", sentiment: "positive", change: "+22%" },
-    { topic: "#Cardano", mentions: "45.6K", sentiment: "neutral", change: "+3%" },
-    { topic: "#BNB", mentions: "32.8K", sentiment: "positive", change: "+7%" },
-  ];
-  
+  // Sample student activity posts
   const popularPosts = [
     {
-      author: "CryptoAnalyst",
-      handle: "@crypto_analyst",
-      content: "Bitcoin just broke above the key resistance level. This could be the start of the next major move to the upside. $BTC $ETH",
-      likes: 3240,
-      retweets: 1540,
+      author: "Student Council",
+      handle: "@student_council",
+      content: "Our annual talent show is just around the corner! Sign-ups are open until Friday. Show off your skills and win amazing prizes! #TalentShow2023",
+      likes: 324,
+      retweets: 154,
       time: "4 hours ago"
     },
     {
-      author: "Blockchain Dev",
-      handle: "@blockchain_dev",
-      content: "Ethereum's next upgrade will significantly reduce gas fees and improve transaction speeds. A game-changer for DeFi applications. $ETH",
-      likes: 2180,
-      retweets: 980,
+      author: "Science Club",
+      handle: "@science_club",
+      content: "Congratulations to our science fair winners! Amazing projects on renewable energy and biotechnology. Next year will be even bigger! #ScienceFair",
+      likes: 218,
+      retweets: 98,
       time: "7 hours ago"
     },
     {
-      author: "DeFi Explorer",
-      handle: "@defi_explorer",
-      content: "A new vulnerability was found in a popular DeFi protocol. All users should withdraw funds immediately while the team addresses the issue. Details in thread.",
-      likes: 4320,
-      retweets: 2860,
+      author: "Principal Johnson",
+      handle: "@principal_johnson",
+      content: "Proud to announce that our school has been recognized for academic excellence for the third year in a row! Congratulations to all students and teachers!",
+      likes: 432,
+      retweets: 286,
       time: "2 hours ago"
     }
   ];
@@ -61,7 +54,7 @@ export default function SocialTrends() {
                 <Button variant="ghost" size="icon" onClick={() => navigate("/")} className="rounded-full">
                   <ArrowLeft size={20} />
                 </Button>
-                <h1 className="text-2xl font-bold">Social Trends</h1>
+                <h1 className="text-2xl font-bold">School Activities</h1>
               </div>
             </div>
             
@@ -69,7 +62,7 @@ export default function SocialTrends() {
               <div className="lg:col-span-8 bg-card rounded-2xl p-6 shadow-sm border border-border animate-fade-in">
                 <h2 className="text-xl font-semibold mb-4">Trending Topics</h2>
                 <p className="text-muted-foreground mb-6">
-                  Most discussed cryptocurrency topics across social media in the last 24 hours.
+                  Most discussed school events and activities across social platforms in the last week.
                 </p>
                 
                 <div className="overflow-x-auto">
@@ -79,11 +72,11 @@ export default function SocialTrends() {
                         <th className="text-left py-3 px-4">Topic</th>
                         <th className="text-left py-3 px-4">Mentions</th>
                         <th className="text-left py-3 px-4">Sentiment</th>
-                        <th className="text-left py-3 px-4">24h Change</th>
+                        <th className="text-left py-3 px-4">Weekly Change</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {trendingTopics.map((topic, index) => (
+                      {socialTrendingTopics.map((topic, index) => (
                         <tr key={index} className="border-b border-border hover:bg-muted/30 transition-colors">
                           <td className="py-3 px-4 font-medium">{topic.topic}</td>
                           <td className="py-3 px-4 text-muted-foreground">{topic.mentions}</td>
@@ -110,8 +103,8 @@ export default function SocialTrends() {
               
               <div className="lg:col-span-4 bg-card rounded-2xl p-6 shadow-sm border border-border animate-fade-in">
                 <div className="flex items-center gap-2 mb-4">
-                  <Twitter size={20} className="text-[#1DA1F2]" />
-                  <h2 className="text-xl font-semibold">Popular Posts</h2>
+                  <School size={20} className="text-primary" />
+                  <h2 className="text-xl font-semibold">School Announcements</h2>
                 </div>
                 <div className="space-y-6">
                   {popularPosts.map((post, index) => (
@@ -126,7 +119,7 @@ export default function SocialTrends() {
                       <p className="text-sm mb-2">{post.content}</p>
                       <div className="flex items-center gap-4 text-xs text-muted-foreground">
                         <span className="flex items-center gap-1">
-                          <MessageCircle size={14} />
+                          <MessageSquare size={14} />
                           {post.retweets}
                         </span>
                         <span className="flex items-center gap-1">

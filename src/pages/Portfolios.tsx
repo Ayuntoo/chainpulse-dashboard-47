@@ -1,42 +1,17 @@
 
 import { useState } from "react";
-import { ArrowLeft, Briefcase, Plus, Trash2, Settings, Eye, EyeOff } from "lucide-react";
+import { ArrowLeft, GraduationCap, Plus, Trash2, Settings, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { useStats } from "@/hooks/useStats";
+import { studentPrograms } from "@/lib/mockData";
 
 export default function Portfolios() {
   const navigate = useNavigate();
   const { loading, refreshData } = useStats();
-  const [hideBalances, setHideBalances] = useState(false);
-  
-  // Sample portfolio data
-  const portfolios = [
-    { 
-      name: "Main Portfolio", 
-      totalValue: "$45,320.50", 
-      dailyChange: 2.4,
-      assets: [
-        { name: "Bitcoin", ticker: "BTC", allocation: "45%", value: "$20,394.23" },
-        { name: "Ethereum", ticker: "ETH", allocation: "30%", value: "$13,596.15" },
-        { name: "Solana", ticker: "SOL", allocation: "15%", value: "$6,798.08" },
-        { name: "Cardano", ticker: "ADA", allocation: "10%", value: "$4,532.05" }
-      ]
-    },
-    { 
-      name: "DeFi Investments", 
-      totalValue: "$12,450.00", 
-      dailyChange: -1.2,
-      assets: [
-        { name: "Uniswap", ticker: "UNI", allocation: "25%", value: "$3,112.50" },
-        { name: "Aave", ticker: "AAVE", allocation: "35%", value: "$4,357.50" },
-        { name: "Compound", ticker: "COMP", allocation: "20%", value: "$2,490.00" },
-        { name: "Maker", ticker: "MKR", allocation: "20%", value: "$2,490.00" }
-      ]
-    }
-  ];
+  const [hideDetails, setHideDetails] = useState(false);
   
   return (
     <div className="min-h-screen bg-background flex">
@@ -52,34 +27,34 @@ export default function Portfolios() {
                 <Button variant="ghost" size="icon" onClick={() => navigate("/")} className="rounded-full">
                   <ArrowLeft size={20} />
                 </Button>
-                <h1 className="text-2xl font-bold">Portfolios</h1>
+                <h1 className="text-2xl font-bold">Academic Programs</h1>
               </div>
               <div className="flex gap-2">
                 <Button 
                   variant="outline" 
                   size="sm" 
                   className="rounded-full"
-                  onClick={() => setHideBalances(!hideBalances)}
+                  onClick={() => setHideDetails(!hideDetails)}
                 >
-                  {hideBalances ? <Eye size={16} /> : <EyeOff size={16} />}
-                  <span className="ml-1">{hideBalances ? "Show" : "Hide"} Balances</span>
+                  {hideDetails ? <Eye size={16} /> : <EyeOff size={16} />}
+                  <span className="ml-1">{hideDetails ? "Show" : "Hide"} Details</span>
                 </Button>
                 <Button className="rounded-full">
                   <Plus size={16} />
-                  <span className="ml-1">New Portfolio</span>
+                  <span className="ml-1">New Program</span>
                 </Button>
               </div>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {portfolios.map((portfolio, index) => (
+              {studentPrograms.map((program, index) => (
                 <div key={index} className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm animate-fade-in">
                   <div className="flex justify-between items-center p-4 bg-muted/50">
                     <div className="flex items-center gap-3">
                       <div className="h-10 w-10 rounded-full flex items-center justify-center bg-primary/20">
-                        <Briefcase size={18} className="text-primary" />
+                        <GraduationCap size={18} className="text-primary" />
                       </div>
-                      <h3 className="font-medium">{portfolio.name}</h3>
+                      <h3 className="font-medium">{program.name}</h3>
                     </div>
                     <div className="flex gap-1">
                       <Button variant="ghost" size="icon" className="rounded-full h-8 w-8">
@@ -93,33 +68,33 @@ export default function Portfolios() {
                   
                   <div className="p-4">
                     <div className="flex justify-between items-center mb-4">
-                      <div className="text-sm text-muted-foreground">Total Value</div>
+                      <div className="text-sm text-muted-foreground">Average Pass Rate</div>
                       <div className="flex items-center gap-2">
-                        <span className={portfolio.dailyChange >= 0 ? "text-chart-green" : "text-chart-red"}>
-                          {portfolio.dailyChange >= 0 ? "+" : ""}{portfolio.dailyChange}%
+                        <span className={program.dailyChange >= 0 ? "text-chart-green" : "text-chart-red"}>
+                          {program.dailyChange >= 0 ? "+" : ""}{program.dailyChange}%
                         </span>
                       </div>
                     </div>
                     <div className="text-2xl font-semibold mb-6">
-                      {hideBalances ? "••••••" : portfolio.totalValue}
+                      {hideDetails ? "••••••" : program.totalValue}
                     </div>
                     
-                    <h4 className="text-sm font-medium mb-2">Assets</h4>
+                    <h4 className="text-sm font-medium mb-2">Subjects</h4>
                     <div className="space-y-2">
-                      {portfolio.assets.map((asset, assetIndex) => (
+                      {program.assets.map((subject, assetIndex) => (
                         <div key={assetIndex} className="flex justify-between items-center py-2 border-b border-border last:border-0">
                           <div className="flex items-center gap-2">
                             <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
-                              <span className="text-xs">{asset.ticker.charAt(0)}</span>
+                              <span className="text-xs">{subject.ticker.charAt(0)}</span>
                             </div>
                             <div>
-                              <div className="text-sm font-medium">{asset.name}</div>
-                              <div className="text-xs text-muted-foreground">{asset.ticker}</div>
+                              <div className="text-sm font-medium">{subject.name}</div>
+                              <div className="text-xs text-muted-foreground">{subject.ticker}</div>
                             </div>
                           </div>
                           <div className="text-right">
-                            <div className="text-sm">{hideBalances ? "••••••" : asset.value}</div>
-                            <div className="text-xs text-muted-foreground">{asset.allocation}</div>
+                            <div className="text-sm">{hideDetails ? "••••••" : subject.value}</div>
+                            <div className="text-xs text-muted-foreground">{subject.allocation}</div>
                           </div>
                         </div>
                       ))}
@@ -133,8 +108,8 @@ export default function Portfolios() {
                   <div className="mx-auto h-12 w-12 rounded-full bg-muted/70 flex items-center justify-center mb-3">
                     <Plus size={24} className="text-muted-foreground" />
                   </div>
-                  <h3 className="text-lg font-medium">Create New Portfolio</h3>
-                  <p className="text-sm text-muted-foreground mt-1">Track and manage your crypto investments</p>
+                  <h3 className="text-lg font-medium">Create New Program</h3>
+                  <p className="text-sm text-muted-foreground mt-1">Track and manage different academic programs</p>
                 </div>
               </div>
             </div>

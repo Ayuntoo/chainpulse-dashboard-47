@@ -10,9 +10,9 @@ import {
   Settings, 
   ChevronLeft, 
   ChevronRight,
-  Wallet,
+  GraduationCap,
   BarChart4,
-  Star,
+  Award,
   Users
 } from "lucide-react";
 
@@ -60,12 +60,12 @@ export default function Sidebar({ className }: SidebarProps) {
   const getActivePath = () => {
     const path = location.pathname;
     if (path === "/") return "Dashboard";
-    if (path === "/projects") return "Project List";
-    if (path === "/top-roi") return "Top ROI";
-    if (path === "/trending") return "Trending";
-    if (path === "/market-insights") return "Market Insights";
-    if (path === "/portfolios") return "Portfolios";
-    if (path === "/social-trends") return "Social Trends";
+    if (path === "/projects") return "Class List";
+    if (path === "/top-roi") return "Top Performers";
+    if (path === "/trending") return "Exam Statistics";
+    if (path === "/market-insights") return "School Insights";
+    if (path === "/portfolios") return "Academic Programs";
+    if (path === "/social-trends") return "School Activities";
     if (path === "/settings") return "Settings";
     return "Dashboard";
   };
@@ -114,22 +114,22 @@ export default function Sidebar({ className }: SidebarProps) {
           />
           <SidebarLink 
             icon={List} 
-            label="Project List" 
-            active={activeLink === "Project List"}
+            label="Class List" 
+            active={activeLink === "Class List"}
             collapsed={collapsed}
             onClick={() => navigate("/projects")}
           />
           <SidebarLink 
-            icon={Star} 
-            label="Top ROI" 
-            active={activeLink === "Top ROI"}
+            icon={Award} 
+            label="Top Performers" 
+            active={activeLink === "Top Performers"}
             collapsed={collapsed}
             onClick={() => navigate("/top-roi")}
           />
           <SidebarLink 
             icon={TrendingUp} 
-            label="Trending" 
-            active={activeLink === "Trending"}
+            label="Exam Statistics" 
+            active={activeLink === "Exam Statistics"}
             collapsed={collapsed}
             onClick={() => navigate("/trending")}
           />
@@ -145,22 +145,22 @@ export default function Sidebar({ className }: SidebarProps) {
           <div className="space-y-1">
             <SidebarLink 
               icon={LineChart} 
-              label="Market Insights" 
-              active={activeLink === "Market Insights"}
+              label="School Insights" 
+              active={activeLink === "School Insights"}
               collapsed={collapsed}
               onClick={() => navigate("/market-insights")}
             />
             <SidebarLink 
-              icon={Wallet} 
-              label="Portfolios" 
-              active={activeLink === "Portfolios"}
+              icon={GraduationCap} 
+              label="Academic Programs" 
+              active={activeLink === "Academic Programs"}
               collapsed={collapsed}
               onClick={() => navigate("/portfolios")}
             />
             <SidebarLink 
               icon={Users} 
-              label="Social Trends" 
-              active={activeLink === "Social Trends"}
+              label="School Activities" 
+              active={activeLink === "School Activities"}
               collapsed={collapsed}
               onClick={() => navigate("/social-trends")}
             />

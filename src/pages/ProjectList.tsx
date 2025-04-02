@@ -26,14 +26,14 @@ export default function ProjectList() {
                 <Button variant="ghost" size="icon" onClick={() => navigate("/")} className="rounded-full">
                   <ArrowLeft size={20} />
                 </Button>
-                <h1 className="text-2xl font-bold">Project List</h1>
+                <h1 className="text-2xl font-bold">Class List</h1>
               </div>
             </div>
             
             <div className="bg-card rounded-2xl p-6 shadow-sm border border-border animate-fade-in">
-              <h2 className="text-xl font-semibold mb-4">All Projects</h2>
+              <h2 className="text-xl font-semibold mb-4">All Classes</h2>
               <p className="text-muted-foreground mb-6">
-                Browse all available crypto projects with detailed information and metrics.
+                Browse all classes with detailed information and performance metrics.
               </p>
               <ProjectsTable projects={recentProjects} />
             </div>

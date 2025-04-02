@@ -26,24 +26,24 @@ export default function Trending() {
                 <Button variant="ghost" size="icon" onClick={() => navigate("/")} className="rounded-full">
                   <ArrowLeft size={20} />
                 </Button>
-                <h1 className="text-2xl font-bold">Trending Projects</h1>
+                <h1 className="text-2xl font-bold">Exam Statistics</h1>
               </div>
             </div>
             
             <div className="bg-card rounded-2xl p-6 shadow-sm border border-border animate-fade-in">
-              <h2 className="text-xl font-semibold mb-4">Most Popular Projects</h2>
+              <h2 className="text-xl font-semibold mb-4">Subject Performance</h2>
               <p className="text-muted-foreground mb-6">
-                Projects with the highest popularity and search volume in the last 24 hours.
+                Subjects with the highest average scores in the current academic term.
               </p>
               <TrendingSection tokens={trending} />
               
               <div className="mt-8 pt-6 border-t border-border">
-                <h3 className="text-lg font-medium mb-4">Trending Categories</h3>
+                <h3 className="text-lg font-medium mb-4">Academic Departments</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {["Layer 1", "DeFi", "NFTs", "GameFi", "Meme Coins", "AI"].map((category) => (
+                  {["Sciences", "Humanities", "Languages", "Mathematics", "Arts", "Physical Education"].map((category) => (
                     <div key={category} className="bg-muted rounded-xl p-4 hover:bg-muted/80 transition-colors">
                       <h4 className="font-medium">{category}</h4>
-                      <p className="text-sm text-muted-foreground mt-1">Trending category</p>
+                      <p className="text-sm text-muted-foreground mt-1">Academic department</p>
                     </div>
                   ))}
                 </div>
