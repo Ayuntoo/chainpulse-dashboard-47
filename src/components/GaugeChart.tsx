@@ -1,6 +1,6 @@
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { ArrowDownRight, ArrowUpRight, Award } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface GaugeChartProps {
   value: number;
@@ -12,22 +12,20 @@ export default function GaugeChart({ value, dailyChange, weeklyChange }: GaugeCh
   // Format value
   const formattedValue = value.toString();
   
-  // Gauge chart data setup
+  // Data for the pie chart - semi-circle
   const data = [
-    { name: "Value", value: 70 }, // Filled
-    { name: "Empty", value: 30 }, // Empty
+    { name: "Grade 1", value: 30 },
+    { name: "Grade 2-3", value: 70 }
   ];
   
-  // For visual appeal, add color gradient
-  const COLORS = ["#4A9DFF", "#2DD4BF"]; // Gradient blue to teal
-  const EMPTY_COLOR = "#374151"; // Dark gray for empty space
+  // Colors for pie chart segments
+  const COLORS = ["#33C3F0", "#4ADE80"];
   
   return (
     <div className="relative rounded-lg border border-border bg-card p-5 gradient-border h-[320px] animate-scale-in" style={{ animationDelay: "100ms" }}>
       <div className="flex justify-between items-start mb-6">
         <div>
           <h3 className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
-            <Award size={14} />
             Top 10 Students In Each Grade
           </h3>
           <div className="text-2xl font-semibold mt-1.5">Total: {formattedValue}</div>
@@ -48,20 +46,10 @@ export default function GaugeChart({ value, dailyChange, weeklyChange }: GaugeCh
               paddingAngle={0}
               dataKey="value"
             >
-              <Cell key="filled" fill="url(#gaugeGradient)" />
-              <Cell key="empty" fill={EMPTY_COLOR} />
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
             </Pie>
-            <defs>
-              <linearGradient id="gaugeGradient" x1="0" y1="0" x2="1" y2="0">
-                {COLORS.map((color, index) => (
-                  <stop
-                    key={index}
-                    offset={index / (COLORS.length - 1)}
-                    stopColor={color}
-                  />
-                ))}
-              </linearGradient>
-            </defs>
           </PieChart>
         </ResponsiveContainer>
 

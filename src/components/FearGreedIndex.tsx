@@ -1,7 +1,6 @@
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { cn } from "@/lib/utils";
-import { ArrowUpRight, ArrowDownRight, Award } from "lucide-react";
+import { Award } from "lucide-react";
 
 interface FearGreedIndexProps {
   value: number;
@@ -16,23 +15,22 @@ export default function FearGreedIndex({
   previousValue, 
   previousChange 
 }: FearGreedIndexProps) {
-  // Data for the pie chart
+  // Data for the pie chart - full circle
   const data = [
     { name: "Value", value: value },
     { name: "Empty", value: 100 - value }
   ];
-
-  // Color mapping based on the value
-  const getColor = (value: number) => {
-    if (value >= 75) return "#4ADE80"; // Excellent
-    if (value >= 55) return "#A3E635"; // Good
-    if (value >= 45) return "#FACC15"; // Average
-    if (value >= 25) return "#FB923C"; // Below Average
-    return "#F87171"; // Needs Improvement
+  
+  // Get color based on value
+  const getColor = () => {
+    if (value >= 75) return "#4ADE80"; // Excellent - green
+    if (value >= 55) return "#A3E635"; // Good - light green
+    if (value >= 45) return "#FACC15"; // Average - yellow
+    if (value >= 25) return "#FB923C"; // Below Average - orange
+    return "#F87171"; // Needs Improvement - red
   };
   
-  const indicatorColor = getColor(value);
-  const isPositiveChange = previousChange >= 0;
+  const activeColor = getColor();
   
   return (
     <div className="rounded-lg border border-border bg-card p-5 gradient-border h-[320px] animate-scale-in" style={{ animationDelay: "400ms" }}>
@@ -57,32 +55,22 @@ export default function FearGreedIndex({
               dataKey="value"
               strokeWidth={0}
             >
-              <Cell fill={indicatorColor} />
-              <Cell fill="#374151" /> {/* Empty space */}
+              <Cell fill={activeColor} />
+              <Cell fill="#374151" /> {/* Dark gray for empty space */}
             </Pie>
           </PieChart>
         </ResponsiveContainer>
         
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <div className="text-5xl font-bold">{value}</div>
-          <div 
-            className="text-xl font-medium mt-1" 
-            style={{ color: indicatorColor }}
-          >
+          <div className="text-xl font-medium mt-1" style={{ color: activeColor }}>
             {indicator}
           </div>
           
           <div className="flex items-center mt-4 text-sm">
             <span className="text-muted-foreground mr-2">Last Month: {previousValue}</span>
-            <div className={cn(
-              "flex items-center",
-              isPositiveChange ? "text-green-500" : "text-red-500"
-            )}>
-              {isPositiveChange 
-                ? <ArrowUpRight size={14} /> 
-                : <ArrowDownRight size={14} />
-              }
-              <span>{Math.abs(previousChange)}</span>
+            <div className={`flex items-center ${previousChange >= 0 ? "text-green-500" : "text-red-500"}`}>
+              {previousChange >= 0 ? "+" : ""}{previousChange}
             </div>
           </div>
         </div>
